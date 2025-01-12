@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vilmerolle</title>
+
+  <!-- Green favicon (SVG) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2300FF00'/%3E%3C/svg%3E">
+
+  <style>
+    body {
+      background-color: black;
+      color: green;
+      font-family: 'Courier New', Courier, monospace;
+      text-align: center;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .ascii-art {
+      white-space: pre;
+      font-size: 16px;
+      line-height: 1.2em;
+    }
+
+    .blink {
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    .links {
+      margin-top: 20px;
+    }
+
+    .link {
+      color: green;
+      text-decoration: none;
+      font-size: 1.2em;
+      display: block;
+      padding: 5px 0;
+      transition: color 0.2s, text-shadow 0.2s;
+    }
+
+    .link:focus,
+    .link.active,
+    .link:hover {
+      color: lime;
+      text-shadow: 0 0 10px lime;
+      text-decoration: underline;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      font-size: 0.9em;
+    }
+
+    .created-by {
+      font-size: 1.2em;
+      color: lime;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ascii-art">
+    <pre>
+██    ██ ██ ██      ███████ ██      ███    ███ ███████ ██████  
+██    ██ ██ ██      ██      ██      ████  ████ ██      ██   ██ 
+██    ██ ██ ██      █████   ██      ██ ████ ██ █████   ██████  
+██    ██ ██ ██      ██      ██      ██  ██  ██ ██      ██   ██ 
+ ██████  ██ ███████ ███████ ███████ ██      ██ ███████ ██   ██
+    </pre>
+  </div>
+
+  <p>Hello, I'm Vilmerolle, and I'm a developer.</p>
+
+  <div class="links">
+    <a class="link" href="https://vilmeroll3.github.io/github" target="_blank">> GitHub</a>
+    <a class="link" href="https://vilmeroll3.github.io/reddit/" target="_blank">> Reddit</a>
+    <a class="link" href="https://vilmeroll3.github.io/discord" target="_blank">> Discord</a>
+  </div>
+
+  <footer>
+    <p class="created-by blink">Created by Vilmerolle</p>
+  </footer>
+
+  <script>
+    let currentIndex = 0;
+    const links = document.querySelectorAll('.link');
+
+    // Highlight the first link initially
+    links[currentIndex].classList.add('active');
+
+    // Function to update active link based on index
+    function updateActiveLink(index) {
+      links.forEach(link => link.classList.remove('active'));
+      links[index].classList.add('active');
+    }
+
+    // Listen for keydown events
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') {
+        currentIndex = (currentIndex + 1) % links.length;
+        updateActiveLink(currentIndex);
+      } else if (e.key === 'ArrowUp') {
+        currentIndex = (currentIndex - 1 + links.length) % links.length;
+        updateActiveLink(currentIndex);
+      } else if (e.key === 'Enter') {
+        links[currentIndex].click();
+      }
+    });
+
+    // Listen for mouse hover and update the active link
+    links.forEach((link, index) => {
+      link.addEventListener('mouseenter', () => {
+        currentIndex = index;
+        updateActiveLink(currentIndex);
+      });
+    });
+  </script>
+
+</body>
+</html>

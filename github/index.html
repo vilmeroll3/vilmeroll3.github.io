@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirect Page</title>
+  <style>
+    body {
+      background-color: black;
+      color: green;
+      font-family: 'Courier New', Courier, monospace;
+      text-align: center;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .ascii-art {
+      white-space: pre;
+      font-size: 16px;
+      line-height: 1.2em;
+      visibility: visible; /* Display ASCII art immediately */
+      margin-top: 20px; /* Space between redirect message and ASCII art */
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      font-size: 0.9em;
+    }
+
+    .created-by {
+      font-size: 1.2em;
+      color: lime;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .redirect-message {
+      font-size: 1.5em;
+      margin-top: 20px;
+      color: lime;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="redirect-message">
+    Redirecting to <span id="destination-url">your destination...</span>
+  </div>
+
+  <div class="ascii-art" id="ascii-art">
+    ______  _____  _______    ______   _______   _______   
+   (  __  \ (  __  \ (  __  \  (  __  \ (  __  \ (  __  \ 
+   | (  )  )| (  )  )| (  )  ) | (  )  )| (  )  )| (  )  )
+   | | /   )| | /   )| | /   ) | | /   )| | /   )| | /   ) 
+   | (/ / / | (/ / / | (/ / /  | (/ / / | (/ / / | (/ / / 
+   |   / /  |   / /  |   / /   |   / /  |   / /  |   / /   
+   |  ( (   |  ( (   |  ( (    |  ( (   |  ( (   |  ( (  
+   |   \ \  |   \ \  |   \ \   |   \ \  |   \ \  |   \ \   
+   |    \/  |    \/  |    \/   |    \/  |    \/  |    \/  
+  </div>
+
+  <footer>
+    <a href="https://github.com/vilmero11e" class="created-by">Created by vilmerolle</a>
+  </footer>
+
+  <script>
+    const targetUrl = "https://github.com/vilmeroll3"; // Change to your redirect URL
+    document.getElementById('destination-url').textContent = targetUrl;
+
+    // Redirect after 5 seconds
+    setTimeout(function() {
+      window.location.href = targetUrl; // Perform the redirection
+    }, 2000); // Adjust this delay if needed
+  </script>
+
+</body>
+</html>
